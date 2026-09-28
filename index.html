@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelDoc | JPG to PDF Converter Online</title>
+  <meta name="description" content="Convert one or multiple JPG images to PDF free. Reorder photos, choose A4 or Letter pages, set margins and download one combined PDF. No sign-up, no uploads." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">&#9670;</span>
+        <span class="logo-text">Pixel<span class="logo-accent">Doc</span></span>
+      </a>
+      <p class="header-tagline">We use ads on the site to maintain it</p>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">100% Private &bull; No Uploads &bull; Browser-Based</div>
+      <h1>JPG to PDF Converter</h1>
+      <p class="hero-sub">Turn one or many JPG images into a polished PDF document. Full control over page size, orientation, margins and image order, all processed in your browser.</p>
+    </div>
+  </section>
+
+  <!-- Tool Area -->
+  <main class="tool-section">
+    <div class="container">
+      <!-- Dropzone -->
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-icon">📁</div>
+        <p class="dropzone-label">Drop JPG images here</p>
+        <p class="dropzone-hint">Drag and drop here or click to browse</p>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg" multiple hidden />
+      </div>
+
+      <!-- Image Grid -->
+      <div id="imageSection" class="image-section hidden">
+        <p class="reorder-hint">Drag images to reorder. Click 🔄 to rotate.</p>
+        <div id="imageGrid" class="image-grid"></div>
+
+        <!-- Settings -->
+        <div class="settings-grid">
+          <label class="setting">
+            <span class="setting-label">Page size</span>
+            <select id="pageSize">
+              <option value="A4" selected>A4</option>
+              <option value="Letter">Letter</option>
+              <option value="Original">Original</option>
+            </select>
+          </label>
+          <label class="setting">
+            <span class="setting-label">Orientation</span>
+            <select id="orientation">
+              <option value="Auto" selected>Auto</option>
+              <option value="Portrait">Portrait</option>
+              <option value="Landscape">Landscape</option>
+            </select>
+          </label>
+          <label class="setting">
+            <span class="setting-label">Margins</span>
+            <select id="margin">
+              <option value="None">None</option>
+              <option value="Small" selected>Small</option>
+              <option value="Normal">Normal</option>
+            </select>
+          </label>
+          <label class="setting">
+            <span class="setting-label">Image fit</span>
+            <select id="fit">
+              <option value="Fit" selected>Fit</option>
+              <option value="Fill">Fill</option>
+              <option value="Original">Original</option>
+            </select>
+          </label>
+        </div>
+
+        <!-- Output filename -->
+        <div class="filename-row">
+          <label class="setting-label" for="outputName">Output Filename</label>
+          <div class="filename-input-wrap">
+            <input type="text" id="outputName" value="images" placeholder="images" />
+            <span class="filename-badge">.pdf</span>
+          </div>
+          <p class="filename-hint">Customize the output filename before downloading.</p>
+        </div>
+
+        <!-- Convert Button -->
+        <button id="convertBtn" class="convert-btn">Convert to PDF</button>
+
+        <!-- Progress -->
+        <div id="progressArea" class="progress-area hidden">
+          <div id="phaseText" class="phase-text"></div>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-fill"></div>
+          </div>
+          <div id="progressPct" class="progress-pct"></div>
+        </div>
+
+        <!-- Messages -->
+        <p id="errorMsg" class="error-msg hidden"></p>
+        <p id="successMsg" class="success-msg hidden">PDF downloaded successfully!</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <h2>Why use PixelDoc?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>100% Private</h3>
+          <p>Your images never leave your device. Everything is processed locally in your browser using open-source libraries.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Conversion</h3>
+          <p>No waiting in queues or server processing. Your PDF is built directly in JavaScript and downloaded immediately.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Full Control</h3>
+          <p>Choose page size, orientation, margins, and image fit mode. Reorder and rotate images before converting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📢</div>
+          <h3>Ad-Supported</h3>
+          <p>We use ads on the site to maintain it. Enjoy full access without subscriptions, accounts, or watermarks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Note -->
+  <section class="privacy-section">
+    <div class="container">
+      <div class="privacy-card">
+        <h3>🛡️ Your images are converted entirely on your device</h3>
+        <p>The JPG to PDF conversion process runs entirely in your browser using PDF-lib, an open-source JavaScript library for creating PDF documents. When you add image files, your browser reads them from your local storage into memory. PDF-lib then constructs the PDF data structure in JavaScript, embedding each image into the appropriate page. The resulting PDF is written directly to a file download without any intermediate step that touches a server or network connection.</p>
+        <p>This means your photographs, scanned documents and other images are never transmitted to any party. Sensitive documents such as identity documents, financial records, medical images and personal photographs can be converted without any privacy concern. Once you close the browser tab, all data from the session is released from memory.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 PixelDoc. Browser-based document tools. We use ads on the site to maintain it.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
